@@ -45,10 +45,9 @@ const rmv =(item)=>{
 }
 
   return (
-    <div className="container mt-3">
-      <h2 className="text-center">Card Details Page </h2>
-      <p className="text-center mt-3">Resturent:</p>
-      <hr />
+    <div className="container mt-5">
+      <h2 className="text-center pb-3"> Details Page </h2>
+      <hr style={{paddingBottom:60}}/>
 
       {
         data && data.map((ele)=>{
@@ -64,17 +63,15 @@ const rmv =(item)=>{
         </div>
 
         <div className="col-3">
-          <p>
-            <strong>Dishes : </strong>{ele.rname}
+        <p>
+            <strong>Title : </strong> {ele.title}
           </p>
           <p>
-            <strong>Price : </strong> {ele.price}
+            <strong>Description : </strong> {ele.description}
           </p>
+          
           <p>
-            <strong>Address : </strong> {ele.address}
-          </p>
-          <p>
-            <strong>Total : {ele.price * ele.qnty} </strong> 
+            <strong>Total Quantity  : {ele.qnty} </strong> 
           </p>
           <div className="mt-5 d-flex justify-content-between align-items-center" style={{width:100, cursor:"pointer", background:"#ddd",color:"#111"}}>
 
@@ -85,16 +82,9 @@ const rmv =(item)=>{
           </div>
         </div>
         <div className="col-3">
-          <p>
-            <strong>Rating : </strong>
-            <span style={{ background: "green", color: "white" }}>{ele.rating} ★</span>
-          </p>
+          
 
-          <p>
-            <strong>
-              Order : <span>{ele.somedata}</span>
-            </strong>
-          </p>
+         
 
           <p>
             <strong>Remove : </strong>

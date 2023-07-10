@@ -10,12 +10,13 @@ import empty from '../assests/th.jpeg'
 import { useDispatch, useSelector } from 'react-redux';
 import { Table } from 'react-bootstrap';
 import { DLT } from '../redux/action/Action';
+import './Style.css'
 const Header = () => {
-  const [price, setprice]=useState();
+  const [price, setprice] = useState();
 
   const [anchorEl, setAnchorEl] = useState(null);
-const dispatch=useDispatch()
- 
+  const dispatch = useDispatch()
+
 
 
   const getdata = useSelector((state) => state.cartreducer.carts)
@@ -28,33 +29,33 @@ const dispatch=useDispatch()
     setAnchorEl(null);
   };
 
-  const dlt=(id)=>{
+  const dlt = (id) => {
     dispatch(DLT(id))
 
   }
- 
- 
-  const total =()=>{
-    let price=0;
 
-    getdata.map((ele,key)=>{
-      price =ele.price * ele.qnty + price;
+
+  const total = () => {
+    let price = 0;
+
+    getdata.map((ele, key) => {
+      price = ele.price * ele.qnty + price;
       setprice(price)
       console.log(setprice)
 
     })
   }
 
-  useEffect(()=>{
+  useEffect(() => {
     total()
-  },[total])
+  }, [total])
   return (
     <div>
-      <Navbar bg="light" variant="light" className=''>
+      <Navbar bg="light" variant="light" className='navbarshadow' >
         <Container>
-          <NavLink to="/" className='text-decoration-none text-dark'>E-commerce</NavLink>
-          <Nav className="me-auto">
-            <Nav.Link href="/">Home</Nav.Link>
+          <NavLink to="/" className='text-decoration-none text-dark  logoo' >Bitvent Tech</NavLink>
+          <Nav className="me-auto" style={{}}>
+            <Nav.Link href="/" className='homee' >Home</Nav.Link>
 
           </Nav>
           <Badge badgeContent={getdata.length} color="primary" style={{ marginRight: 25, marginTop: 8 }}
@@ -80,7 +81,7 @@ const dispatch=useDispatch()
                   <thead>
                     <tr>
                       <th>Photos</th>
-                      <th>Restaurant</th>
+                      <th>Description</th>
 
 
                     </tr>
@@ -102,17 +103,19 @@ const dispatch=useDispatch()
                               </td>
                               <td>
                                 <p>{e.rname}</p>
-                                <p>Price : {e.price}</p>
+                                <p>Title : {e.title}</p>
+                                <p>Description : {e.description}</p>
+
                                 <p>Quantity : {e.qnty}</p>
                                 <p>
-                                  <i className='fas fa-trash smalltrash' onClick={()=>dlt(e.id)} style={{ color: "red", cursor: "pointer", fontSize: 19 }}></i>
+                                  <i className='fas fa-trash smalltrash' onClick={() => dlt(e.id)} style={{ color: "red", cursor: "pointer", fontSize: 19 }}></i>
                                 </p>
 
 
                               </td>
-                              <td className='mt-5' style={{ color: "red", cursor: "pointer", fontSize: 19 }}  onClick={()=>dlt(e.id)} >
+                              <td className='mt-5' style={{ color: "red", cursor: "pointer", fontSize: 19 }} onClick={() => dlt(e.id)} >
 
-                                <i className='fas fa-trash largetrash' onClick={()=>dlt(e.id)} ></i>
+                                <i className='fas fa-trash largetrash' onClick={() => dlt(e.id)} ></i>
                               </td>
                             </tr>
 
@@ -120,7 +123,6 @@ const dispatch=useDispatch()
                         )
                       })
                     }
-                    <p className='text-center'>Total {price}</p>
                   </tbody>
 
                 </Table>
